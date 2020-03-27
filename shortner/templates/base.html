@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-rCA2D+D9QXuP2TomtQwd+uP50EHjpafN+wruul0sXZzX/Da7Txn4tB9aLMZV4DZm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito Sans', ;
+        }
+        
+        .authentication {
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class='container'>
+            <a class="navbar-brand" href="#">Shorten IT</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    {% if user.is_authenticated %}
+                    <a href="/signout/" class="btn btn-primary">Logout</a> {% else %}
+                    <a href="/signin/" class="btn btn-primary" style="margin-right: 5px;">Sign In</a>
+                    <a href="/signup/" class="btn btn-primary">Sign Up</a> {% endif %}
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <div class="authentication">
+            {% block signin %} {% endblock %}
+        </div>
+
+        {% block signup %} {% endblock %} {% block dashboard %} {% endblock %}
+    </div>
+</body>
+
+</html>
